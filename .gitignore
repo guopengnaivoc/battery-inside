@@ -1,0 +1,10 @@
+.DS_Store
+outputs/
+work/BatteryInside/build/
+work/BatteryInside/dmg-build/
+work/BatteryInside/dmg-root-v*/
+work/BatteryInside/.module-cache/
+work/BatteryInside/*.rsrc
+work/BatteryInside/dmg-file-icon.png
+*.xcuserstate
+xcuserdata/
