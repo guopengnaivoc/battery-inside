@@ -1,57 +1,71 @@
-# 电池内显
+# 电池内显 · BatteryInside
 
-一个轻量、只读的 macOS 菜单栏电池指示器，把电量百分比直接显示在电池图形内部。
+[中文](README.md) · [English](docs/README.en.md) · [日本語](docs/README.ja.md) · [Français](docs/README.fr.md) · [Italiano](docs/README.it.md)
+
+![电池内显菜单栏预览](docs/images/hero.svg)
+
+一个轻量、只读的 macOS 菜单栏电池指示器，把电量百分比、剩余电量和供电状态集中显示在一个紧凑图标里。
 
 作者：郭鹏
 
-## 功能
+## 三步安装
 
-- 电池内部显示实时电量百分比
-- 30% 及以上显示白色，10%–29% 显示橘黄色，9% 及以下显示红色
-- 正在充电时显示闪电；已接通电源但未充电时显示插头
-- 仅使用 macOS 明确提供的 `Is Charging`、`Power Source State` 和 `Is Charged` 判断供电状态
+![下载 DMG、拖入应用程序并打开](docs/images/install.svg)
+
+1. 从 [Releases](/guopengnaivoc/battery-inside/releases/latest) 下载最新的 `BatteryInside-版本号.dmg`。
+2. 打开 DMG，把“电池内显”拖到“应用程序”。
+3. 在 Finder → 应用程序中打开“电池内显”。启动后，电池会出现在屏幕顶部菜单栏。
+
+### 首次打开被 macOS 阻止怎么办？
+
+当前公开版本采用临时签名，尚未使用 Apple Developer ID 签名和公证。如果提示“无法验证开发者”或“Apple 无法检查是否包含恶意软件”：
+
+1. 先尝试打开一次应用，然后关闭警告。
+2. 打开“系统设置”→“隐私与安全性”。
+3. 向下找到关于“电池内显”的提示，点击“仍要打开”。
+
+只应对从本项目 GitHub Release 下载且 SHA-256 校验一致的安装包执行此操作。不要关闭整个 Gatekeeper。
+
+## 一眼看懂状态
+
+![电量颜色和充电状态](docs/images/status.svg)
+
+- 30% 及以上：白色
+- 10%–29%：橘黄色
+- 9% 及以下：红色
+- 正在充电：闪电
+- 接通电源但没有充电：插头
+- 无法读取电池：`--`
+
+应用仅使用 macOS 明确提供的 `Is Charging`、`Power Source State` 和 `Is Charged` 判断供电状态。
+
+## 设置与替换系统图标
+
+![打开设置和隐藏系统电池图标](docs/images/settings.svg)
+
+菜单栏图标是只读的，点击不会弹出菜单。要更改设置，请在 Finder 的“应用程序”中再次打开“电池内显”。设置窗口提供：
+
 - 登录时自动启动
 - 20% 和 10% 低电量通知
-- 菜单栏为只读指示器，避免误触；从“应用程序”再次打开可进入设置
-- 不联网，不收集或上传数据
+- 退出应用
+- 安全卸载
 
-## 系统要求
-
-- macOS 13 或更高版本
-- Apple 芯片或 Intel 处理器
-
-## 下载与安装
-
-请从本仓库的 [Releases](/guopengnaivoc/battery-inside/releases/latest) 页面下载最新的 `.dmg` 文件。
-
-1. 打开 DMG，将“电池内显”拖入“应用程序”。
-2. 在 Finder 的“应用程序”中打开“电池内显”。
-3. 启动后，电池百分比会显示在屏幕顶部菜单栏。
-
-当前公开版本采用临时签名，尚未使用 Apple Developer ID 签名和公证。首次打开时，如果 macOS 提示无法验证开发者：
-
-1. 先尝试打开一次应用，然后关闭系统警告。
-2. 打开“系统设置”→“隐私与安全性”。
-3. 在“安全性”区域找到“电池内显”，点击“仍要打开”。
-
-请只对从本项目 GitHub Release 下载且校验值一致的安装包执行上述操作。不要关闭整个 Gatekeeper，也不要运行来源不明的解除命令。
-
-## 隐藏系统自带电池图标
-
-“电池内显”不会删除或修改 macOS 的电池功能，只是在菜单栏中提供另一种显示方式。
+如需让菜单栏只保留“电池内显”，可隐藏系统电池图标：
 
 - 较新 macOS：系统设置 → 菜单栏 → 菜单栏控制项 → 电池 → 关闭菜单栏显示
 - macOS 13–15：系统设置 → 控制中心 → 电池 → 关闭“在菜单栏中显示”
 
-需要恢复时，在相同位置重新开启即可。
+这不会删除或修改 macOS 的电池功能，需要恢复时在相同位置重新开启即可。
 
-## 设置与卸载
+## 系统要求与隐私
 
-菜单栏图标本身不可点击。在 Finder 的“应用程序”中再次打开“电池内显”，可以设置登录时自动启动、低电量通知、退出应用或安全卸载。
+- macOS 13 或更高版本
+- Apple 芯片与 Intel Mac
+- 不联网，不收集或上传数据
 
 ## 从源码构建
 
-项目不依赖第三方库，需要 Xcode Command Line Tools：
+需要 Xcode Command Line Tools，不依赖第三方库：
 
 ```zsh
 cd work/BatteryInside
@@ -59,11 +73,7 @@ cd work/BatteryInside
 ./package_dmg.sh
 ```
 
-构建产物保存在仓库根目录的 `outputs/` 中。`package_dmg.sh` 使用的 `SetFile`、`Rez` 和 `DeRez` 由 Xcode Command Line Tools 提供。
-
-## 隐私
-
-应用仅在本机读取 macOS 提供的电池状态，不联网，不收集或上传数据。
+构建产物保存在仓库根目录的 `outputs/`。
 
 ## 版权
 

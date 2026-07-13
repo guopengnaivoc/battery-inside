@@ -22,6 +22,8 @@ clang -fobjc-arc "$ROOT/IcnsMaker.m" -o "$WORK/IcnsMaker" -framework Foundation
 "$WORK/IcnsMaker" "$WORK/iconset" "$STAGE/.VolumeIcon.icns"
 ditto "$APP" "$STAGE/电池内显.app"
 ditto "$ROOT/安装与使用说明.txt" "$STAGE/安装与使用说明.txt"
+ditto "$ROOT/../../docs/Guide.html" "$STAGE/使用说明 · Guide.html"
+ditto "$ROOT/../../docs/images" "$STAGE/images"
 [[ -e "$STAGE/应用程序" ]] || ln -s /Applications "$STAGE/应用程序"
 SetFile -a C "$STAGE"
 hdiutil create -volname "电池内显 ${VERSION}" -srcfolder "$STAGE" -ov -format UDZO "$OUTPUT"
