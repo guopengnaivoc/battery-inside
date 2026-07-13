@@ -54,6 +54,16 @@ Per mantenere soltanto BatteryInside nella barra dei menu:
 
 Questo non elimina né modifica le funzioni batteria di macOS. Riattiva l'opzione nello stesso punto per ripristinare l'icona Apple.
 
+### Posizionare BatteryInside a destra delle altre icone delle app
+
+![Tenere premuto Command e trascinare BatteryInside](images/position.svg)
+
+1. Tieni premuto `Command (⌘)`.
+2. Senza rilasciarlo, trascina BatteryInside nella barra dei menu con il mouse o il trackpad.
+3. Rilascialo a destra delle altre icone delle app di terze parti.
+
+BatteryInside usa un identificatore stabile per memorizzare la posizione, quindi macOS ripristina il punto scelto dopo la riapertura dell'app, il riavvio del Mac o un aggiornamento. Esegui questa operazione una volta dopo la prima installazione su ogni Mac. Orologio, Centro di Controllo e indicatori della privacy occupano posizioni riservate al sistema; un'app non può spostarsi alla loro destra.
+
 ## Requisiti e privacy
 
 - macOS 13 o successivo

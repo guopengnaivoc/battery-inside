@@ -39,6 +39,7 @@ static void PowerSourceChanged(void *context) {
     UNUserNotificationCenter.currentNotificationCenter.delegate = self;
 
     self.statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:28];
+    self.statusItem.autosaveName = @"local.codex.BatteryInside.statusItem";
     self.statusItem.button.toolTip = @"电池电量";
     self.statusItem.button.target = nil;
     self.statusItem.button.action = nil;
