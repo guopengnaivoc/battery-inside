@@ -30,12 +30,14 @@ Fallo solo per un pacchetto scaricato dalla Release GitHub ufficiale e con check
 
 ![Colori della batteria e stati di alimentazione](images/status.svg)
 
-- 30% o più: bianco
-- 10%–29%: arancione
-- 9% o meno: rosso
+- 30% o più: interno completamente bianco
+- 10%–29%: interno completamente arancione
+- 9% o meno: interno completamente rosso
 - In carica: fulmine
 - Collegato all'alimentazione ma non in carica: spina
 - Dati non disponibili: `--`
+
+Nella versione attuale la lunghezza del riempimento non si riduce con la percentuale. Cambia colore soltanto l'intero interno. Il bordo e il terminale seguono il colore `labelColor` di macOS e non diventano arancioni o rossi; numero, fulmine e spina restano neri.
 
 Lo stato di alimentazione viene determinato usando esclusivamente i valori macOS espliciti `Is Charging`, `Power Source State` e `Is Charged`.
 

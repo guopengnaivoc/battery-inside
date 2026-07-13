@@ -30,12 +30,14 @@ Only do this for a package downloaded from this project's GitHub Release whose S
 
 ![Battery colors and power states](images/status.svg)
 
-- 30% or more: white
-- 10%–29%: orange
-- 9% or less: red
+- 30% or more: the entire interior is white
+- 10%–29%: the entire interior is orange
+- 9% or less: the entire interior is red
 - Charging: lightning bolt
 - Connected to power but not charging: plug
 - Battery data unavailable: `--`
+
+The current version does not shorten the fill as the percentage drops. Only the full interior changes warning color. The outline and battery cap follow macOS `labelColor` (normally black on a light menu bar and white on a dark one); the number, lightning bolt, and plug remain black.
 
 Power state is determined only from the explicit macOS values `Is Charging`, `Power Source State`, and `Is Charged`.
 

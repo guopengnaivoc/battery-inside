@@ -1,25 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
-  <title id="title">BatteryInside menu bar preview</title>
-  <desc id="desc">A macOS style menu bar showing a compact battery with the percentage inside.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img" aria-labelledby="title desc">
+  <title id="title">BatteryInside as it appears in the macOS menu bar</title>
+  <desc id="desc">A realistic macOS desktop crop at actual menu bar proportions. BatteryInside shows 72 percent with a full white interior, black outline, and plug symbol.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#12151c"/><stop offset="1" stop-color="#050608"/></linearGradient>
-    <filter id="shadow" x="-20%" y="-50%" width="140%" height="200%"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-opacity=".45"/></filter>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#182335"/><stop offset=".52" stop-color="#080c13"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".94"/><stop offset="1" stop-color="#f6f6f7" stop-opacity=".88"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
   </defs>
-  <rect width="1200" height="440" rx="42" fill="url(#bg)"/>
-  <circle cx="1060" cy="86" r="120" fill="#37d568" opacity=".08"/>
-  <circle cx="145" cy="380" r="180" fill="#ff9f0a" opacity=".05"/>
-  <text x="72" y="116" fill="#fff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="52" font-weight="700">BatteryInside</text>
-  <text x="74" y="161" fill="#aeb4c0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Percentage, power state and color — in one compact icon.</text>
-  <g transform="translate(72 232)" filter="url(#shadow)">
-    <rect width="1056" height="96" rx="28" fill="#242833" stroke="#3c4250"/>
-    <circle cx="48" cy="48" r="8" fill="#ff5f57"/><circle cx="76" cy="48" r="8" fill="#febc2e"/><circle cx="104" cy="48" r="8" fill="#28c840"/>
-    <text x="760" y="58" fill="#f4f4f6" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24">Mon 09:41</text>
-    <g transform="translate(930 27)">
-      <rect x="0" y="0" width="86" height="42" rx="12" fill="none" stroke="#fff" stroke-width="3"/>
-      <rect x="89" y="13" width="6" height="16" rx="3" fill="#fff"/>
-      <rect x="3" y="3" width="64" height="36" rx="9" fill="#37d568"/>
-      <text x="43" y="29" text-anchor="middle" fill="#060806" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" font-weight="800">76</text>
-    </g>
+  <rect width="1200" height="180" fill="url(#wall)"/>
+  <circle cx="1040" cy="180" r="180" fill="#2463eb" opacity=".18" filter="url(#blur)"/>
+  <circle cx="210" cy="255" r="220" fill="#7c3aed" opacity=".14" filter="url(#blur)"/>
+  <rect width="1200" height="30" fill="url(#glass)"/>
+  <path d="M18 15c0-5 4-9 9-9 1 4-1 7-4 9 3 0 6 2 7 5-1 3-3 7-6 7-2 0-3-1-5-1s-3 1-5 1c-3 0-6-5-6-9 0-4 3-7 7-7 2 0 3 1 4 1 0 0 0-1-1-2z" fill="#111"/>
+  <g fill="#111" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="13">
+    <text x="47" y="20" font-weight="650">Finder</text><text x="94" y="20">File</text><text x="126" y="20">Edit</text><text x="160" y="20">View</text><text x="198" y="20">Go</text><text x="226" y="20">Window</text><text x="279" y="20">Help</text>
+    <text x="1065" y="20">Mon Jul 13  4:08 AM</text>
   </g>
-  <text x="72" y="388" fill="#6f7684" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="18">macOS 13+  ·  Apple silicon + Intel  ·  Local-only</text>
+  <g transform="translate(955 5)" stroke="#111" fill="none" stroke-width="1.4" stroke-linecap="round">
+    <path d="M0 9c6-6 14-6 20 0M4 13c4-4 8-4 12 0M9 17h2"/>
+    <path d="M34 4v13m-5-9h10m-10 5h10"/>
+  </g>
+  <!-- Exact 28 × 18 point BatteryInside status image: 72%, AC connected, not charging. -->
+  <g transform="translate(1018 6)">
+    <rect x="2.45" y="3.25" width="24" height="11.5" rx="2.4" fill="none" stroke="#111" stroke-width="1.3"/>
+    <rect x="4.05" y="4.85" width="20.8" height="8.3" rx="1.2" fill="#fff"/>
+    <path d="M27.15 7h1.6v4h-1.6" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="9.6" y="11.5" text-anchor="middle" fill="#000" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="7.7" font-weight="650">72</text>
+    <rect x="19.75" y="7.2" width="4.3" height="3.5" rx=".8" fill="#000"/>
+    <path d="M20.65 10.2v2.1m2.4-2.1v2.1m-1.1-5v-1.9" stroke="#000" stroke-width="1" stroke-linecap="round"/>
+  </g>
 </svg>

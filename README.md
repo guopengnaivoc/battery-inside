@@ -2,7 +2,7 @@
 
 [中文](README.md) · [English](docs/README.en.md) · [日本語](docs/README.ja.md) · [Français](docs/README.fr.md) · [Italiano](docs/README.it.md)
 
-![电池内显菜单栏预览](docs/images/hero.svg)
+![电池内显在 macOS 菜单栏中的真实显示比例](docs/images/hero.svg)
 
 一个轻量、只读的 macOS 菜单栏电池指示器，把电量百分比、剩余电量和供电状态集中显示在一个紧凑图标里。
 
@@ -30,12 +30,14 @@
 
 ![电量颜色和充电状态](docs/images/status.svg)
 
-- 30% 及以上：白色
-- 10%–29%：橘黄色
-- 9% 及以下：红色
+- 30% 及以上：内部整块填充为白色
+- 10%–29%：内部整块填充为橘黄色
+- 9% 及以下：内部整块填充为红色
 - 正在充电：闪电
 - 接通电源但没有充电：插头
 - 无法读取电池：`--`
+
+当前版本不会根据百分比缩短填充长度。颜色只作用于电池内部的整块填充；外框和右侧电池头不使用橙色或红色，而是始终跟随 macOS 的 `labelColor`（浅色菜单栏通常为黑色，深色菜单栏通常为白色）。数字、闪电和插头始终为黑色。
 
 应用仅使用 macOS 明确提供的 `Is Charging`、`Power Source State` 和 `Is Charged` 判断供电状态。
 

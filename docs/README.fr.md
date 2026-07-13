@@ -30,12 +30,14 @@ Ne le faites que pour un fichier téléchargé depuis la Release GitHub officiel
 
 ![Couleurs de la batterie et états d'alimentation](images/status.svg)
 
-- 30 % ou plus : blanc
-- 10 % à 29 % : orange
-- 9 % ou moins : rouge
+- 30 % ou plus : intérieur entièrement blanc
+- 10 % à 29 % : intérieur entièrement orange
+- 9 % ou moins : intérieur entièrement rouge
 - En charge : éclair
 - Branché mais pas en charge : prise
 - Données indisponibles : `--`
+
+Dans la version actuelle, la longueur du remplissage ne diminue pas avec le pourcentage. Seul l'intérieur complet change de couleur. Le contour et l'embout suivent la couleur `labelColor` de macOS et ne deviennent ni orange ni rouges ; le nombre, l'éclair et la prise restent noirs.
 
 L'état d'alimentation repose uniquement sur les valeurs macOS explicites `Is Charging`, `Power Source State` et `Is Charged`.
 
