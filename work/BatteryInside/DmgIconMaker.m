@@ -1,4 +1,24 @@
 #import <AppKit/AppKit.h>
+#import <math.h>
+
+static NSBezierPath *SquirclePath(CGFloat inset) {
+    const NSInteger segments = 256;
+    const CGFloat exponent = 5.0;
+    const CGFloat center = 512.0;
+    const CGFloat radius = 512.0 - inset;
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    for (NSInteger index = 0; index <= segments; index++) {
+        CGFloat angle = 2.0 * M_PI * index / segments;
+        CGFloat cosine = cos(angle);
+        CGFloat sine = sin(angle);
+        CGFloat x = center + radius * copysign(pow(fabs(cosine), 2.0 / exponent), cosine);
+        CGFloat y = center + radius * copysign(pow(fabs(sine), 2.0 / exponent), sine);
+        if (index == 0) [path moveToPoint:NSMakePoint(x, y)];
+        else [path lineToPoint:NSMakePoint(x, y)];
+    }
+    [path closePath];
+    return path;
+}
 
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
@@ -14,8 +34,8 @@ int main(int argc, const char *argv[]) {
         [scale scaleBy:s / 1024.0]; [scale concat];
         [NSColor.clearColor setFill]; NSRectFill(NSMakeRect(0, 0, 1024, 1024));
 
-        NSBezierPath *tile = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(62, 62, 900, 900) xRadius:210 yRadius:210];
-        [NSColor.blackColor setFill]; [tile fill];
+        [NSColor.blackColor setFill];
+        [SquirclePath(62.0) fill];
 
         NSColor *green = [NSColor colorWithSRGBRed:0.10 green:0.72 blue:0.32 alpha:1];
         NSBezierPath *body = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(178, 351, 610, 322) xRadius:88 yRadius:88];
