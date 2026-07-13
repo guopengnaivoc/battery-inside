@@ -18,6 +18,8 @@ Author: Guo Peng (郭鹏)
 
 ### If macOS blocks the first launch
 
+![Open an unsigned app safely: do not move it to Trash, then use Open Anyway in Privacy & Security](images/open-anyway.svg)
+
 The current public build is ad-hoc signed and has not been notarized with an Apple Developer ID. If macOS says the developer cannot be verified or Apple cannot check the app for malicious software:
 
 1. Try to open the app once, then dismiss the warning.
@@ -25,6 +27,10 @@ The current public build is ad-hoc signed and has not been notarized with an App
 3. Find the BatteryInside message in Security and click Open Anyway.
 
 Only do this for a package downloaded from this project's GitHub Release whose SHA-256 checksum matches. Do not disable Gatekeeper globally.
+
+If macOS explicitly says the app will damage your computer, detects malware, or says the file is damaged, stop and download it again—do not click Open Anyway. The Open Anyway button is normally available for about one hour after the first launch attempt.
+
+Reference: [Apple's official guide to opening an app by overriding security settings](https://support.apple.com/guide/mac-help/open-an-app-by-overriding-security-settings-mh40617/mac).
 
 ## Read the status at a glance
 

@@ -1,1 +1,1 @@
-de650ef4a98afd3d673981630bf7bc9b50dcc4cc686597dacee1e862fe2792a7  BatteryInside-2.8.2.dmg
+813ce7199275f1b667b6806af23aec2afc1d66c23192e720804ffdf5b47f2def  BatteryInside-2.8.3.dmg

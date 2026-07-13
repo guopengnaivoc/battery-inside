@@ -18,6 +18,8 @@ Autore: Guo Peng (郭鹏)
 
 ### Se macOS blocca il primo avvio
 
+![Aprire in sicurezza un'app non firmata: non spostarla nel Cestino, quindi usare Apri comunque in Privacy e sicurezza](images/open-anyway.svg)
+
 La versione pubblica attuale usa una firma ad hoc e non è autenticata con Apple Developer ID. Se macOS comunica che lo sviluppatore non può essere verificato:
 
 1. Prova ad aprire l'app una volta e chiudi l'avviso.
@@ -25,6 +27,10 @@ La versione pubblica attuale usa una firma ad hoc e non è autenticata con Apple
 3. Nella sezione Sicurezza trova il messaggio relativo a BatteryInside e fai clic su Apri comunque.
 
 Fallo solo per un pacchetto scaricato dalla Release GitHub ufficiale e con checksum SHA-256 corrispondente. Non disattivare Gatekeeper globalmente.
+
+Se macOS dichiara esplicitamente che l'app danneggerà il computer, rileva malware o segnala che il file è danneggiato, fermati e scaricalo di nuovo; non fare clic su Apri comunque. Il pulsante è normalmente disponibile per circa un'ora dopo il primo tentativo di avvio.
+
+Riferimento: [guida ufficiale Apple per aprire un'app ignorando le impostazioni di sicurezza](https://support.apple.com/guide/mac-help/open-an-app-by-overriding-security-settings-mh40617/mac).
 
 ## Stato a colpo d'occhio
 
