@@ -22,7 +22,7 @@
   <!-- Exact 28 × 18 point BatteryInside status image: 72%, AC connected, not charging. -->
   <g transform="translate(1018 6)">
     <rect x="2.45" y="3.25" width="24" height="11.5" rx="2.4" fill="none" stroke="#111" stroke-width="1.3"/>
-    <rect x="4.05" y="4.85" width="20.8" height="8.3" rx="1.2" fill="#fff"/>
+    <rect x="4.05" y="4.85" width="14.976" height="8.3" rx="1.2" fill="#fff"/>
     <path d="M27.15 7h1.6v4h-1.6" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="9.6" y="11.5" text-anchor="middle" fill="#000" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="7.7" font-weight="650">72</text>
     <rect x="19.75" y="7.2" width="4.3" height="3.5" rx=".8" fill="#000"/>

@@ -440,8 +440,16 @@ static void PowerSourceChanged(void *context) {
         } else {
             background = NSColor.whiteColor;
         }
-        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(3.1, 4.85, 20.8, 8.3) xRadius:1.2 yRadius:1.2];
-        [background setFill]; [fill fill];
+        CGFloat maximumFillWidth = 20.8;
+        CGFloat fillFraction = percent < 0 ? 1.0 : MIN(100, MAX(0, percent)) / 100.0;
+        CGFloat fillWidth = maximumFillWidth * fillFraction;
+        NSBezierPath *fill = nil;
+        if (fillWidth > 0.0) {
+            CGFloat fillRadius = MIN(1.2, fillWidth / 2.0);
+            fill = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(3.1, 4.85, fillWidth, 8.3)
+                                                    xRadius:fillRadius yRadius:fillRadius];
+            [background setFill]; [fill fill];
+        }
         [NSColor.labelColor setStroke];
         body.lineWidth = 1.3; [body stroke];
         NSBezierPath *cap = [NSBezierPath bezierPath];
@@ -454,29 +462,38 @@ static void PowerSourceChanged(void *context) {
         NSMutableParagraphStyle *style = [NSMutableParagraphStyle new]; style.alignment = NSTextAlignmentCenter;
         NSRect textRect = showPowerState ? NSMakeRect(2.2, 4.1, 14.8, 10) : NSMakeRect(2.2, 4.1, 22.7, 10);
         NSFont *font = [NSFont monospacedDigitSystemFontOfSize:fontSize weight:NSFontWeightSemibold];
-        NSDictionary *attributes = @{NSFontAttributeName:font, NSForegroundColorAttributeName:NSColor.blackColor, NSParagraphStyleAttributeName:style};
-        NSSize textSize = [text sizeWithAttributes:attributes];
-        CGFloat textX = NSMidX(textRect) - textSize.width / 2.0;
-        CGFloat textY = 9.0 - textSize.height / 2.0;
-        [text drawAtPoint:NSMakePoint(round(textX * 2.0) / 2.0, round(textY * 2.0) / 2.0) withAttributes:attributes];
-        [NSColor.blackColor setFill]; [NSColor.blackColor setStroke];
-        if (charging) {
-            NSBezierPath *bolt = [NSBezierPath bezierPath];
-            [bolt moveToPoint:NSMakePoint(21.2, 12.9)];
-            [bolt lineToPoint:NSMakePoint(17.7, 8.8)];
-            [bolt lineToPoint:NSMakePoint(20.2, 8.8)];
-            [bolt lineToPoint:NSMakePoint(18.9, 5.0)];
-            [bolt lineToPoint:NSMakePoint(23.4, 9.8)];
-            [bolt lineToPoint:NSMakePoint(20.8, 9.8)];
-            [bolt closePath]; [bolt fill];
-        } else if (onAC) {
-            NSBezierPath *plug = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(18.8, 7.2, 4.3, 3.5) xRadius:0.8 yRadius:0.8];
-            [plug fill];
-            NSBezierPath *lines = [NSBezierPath bezierPath];
-            [lines moveToPoint:NSMakePoint(19.7, 10.2)]; [lines lineToPoint:NSMakePoint(19.7, 12.3)];
-            [lines moveToPoint:NSMakePoint(22.1, 10.2)]; [lines lineToPoint:NSMakePoint(22.1, 12.3)];
-            [lines moveToPoint:NSMakePoint(21.0, 7.3)]; [lines lineToPoint:NSMakePoint(21.0, 5.4)];
-            lines.lineWidth = 1.0; [lines stroke];
+        void (^drawOverlay)(NSColor *) = ^(NSColor *overlayColor) {
+            NSDictionary *attributes = @{NSFontAttributeName:font, NSForegroundColorAttributeName:overlayColor, NSParagraphStyleAttributeName:style};
+            NSSize textSize = [text sizeWithAttributes:attributes];
+            CGFloat textX = NSMidX(textRect) - textSize.width / 2.0;
+            CGFloat textY = 9.0 - textSize.height / 2.0;
+            [text drawAtPoint:NSMakePoint(round(textX * 2.0) / 2.0, round(textY * 2.0) / 2.0) withAttributes:attributes];
+            [overlayColor setFill]; [overlayColor setStroke];
+            if (charging) {
+                NSBezierPath *bolt = [NSBezierPath bezierPath];
+                [bolt moveToPoint:NSMakePoint(21.2, 12.9)];
+                [bolt lineToPoint:NSMakePoint(17.7, 8.8)];
+                [bolt lineToPoint:NSMakePoint(20.2, 8.8)];
+                [bolt lineToPoint:NSMakePoint(18.9, 5.0)];
+                [bolt lineToPoint:NSMakePoint(23.4, 9.8)];
+                [bolt lineToPoint:NSMakePoint(20.8, 9.8)];
+                [bolt closePath]; [bolt fill];
+            } else if (onAC) {
+                NSBezierPath *plug = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(18.8, 7.2, 4.3, 3.5) xRadius:0.8 yRadius:0.8];
+                [plug fill];
+                NSBezierPath *lines = [NSBezierPath bezierPath];
+                [lines moveToPoint:NSMakePoint(19.7, 10.2)]; [lines lineToPoint:NSMakePoint(19.7, 12.3)];
+                [lines moveToPoint:NSMakePoint(22.1, 10.2)]; [lines lineToPoint:NSMakePoint(22.1, 12.3)];
+                [lines moveToPoint:NSMakePoint(21.0, 7.3)]; [lines lineToPoint:NSMakePoint(21.0, 5.4)];
+                lines.lineWidth = 1.0; [lines stroke];
+            }
+        };
+        drawOverlay(NSColor.labelColor);
+        if (fill) {
+            [NSGraphicsContext saveGraphicsState];
+            [fill addClip];
+            drawOverlay(NSColor.blackColor);
+            [NSGraphicsContext restoreGraphicsState];
         }
         [NSGraphicsContext restoreGraphicsState];
         return YES;
