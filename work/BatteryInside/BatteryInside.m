@@ -14,6 +14,7 @@ static NSString * const LowBattery10NotificationID = @"local.codex.BatteryInside
 @interface AppDelegate : NSObject <NSApplicationDelegate, UNUserNotificationCenterDelegate> {
     CFRunLoopSourceRef _powerSourceRunLoopSource;
     BOOL _observingStatusItemAppearance;
+    NSTimeInterval _settingsReopenReadyAt;
 }
 @property (strong) NSStatusItem *statusItem;
 @property (strong) NSTimer *timer;
@@ -29,6 +30,12 @@ static void PowerSourceChanged(void *context) {
 }
 
 @implementation AppDelegate
+
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    // Login item restoration can deliver a synthetic reopen event while the app is starting.
+    // Ignore only that startup event; later Finder/Applications opens still show Settings.
+    _settingsReopenReadyAt = NSProcessInfo.processInfo.systemUptime + 10.0;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     [NSUserDefaults.standardUserDefaults registerDefaults:@{
@@ -78,6 +85,7 @@ static void PowerSourceChanged(void *context) {
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
+    if (NSProcessInfo.processInfo.systemUptime < _settingsReopenReadyAt) return NO;
     [self showSettingsWindow];
     return YES;
 }

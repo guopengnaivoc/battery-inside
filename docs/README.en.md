@@ -55,6 +55,8 @@ Power state is determined only from the explicit macOS values `Is Charging`, `Po
 
 The menu bar indicator is read-only and does not react to clicks. To change settings, open BatteryInside again from Finder → Applications. You can enable launch at login, enable low-battery alerts at 20% and 10%, quit, or safely uninstall the app.
 
+Launch at Login is silent: after a restart or a new login, only the menu bar battery appears and the Settings window stays closed. Open BatteryInside again from Finder → Applications whenever you need Settings.
+
 To keep only BatteryInside in the menu bar:
 
 - Newer macOS: System Settings → Menu Bar → Menu Bar Controls → Battery → turn off menu bar display

@@ -55,6 +55,8 @@ L'état d'alimentation repose uniquement sur les valeurs macOS explicites `Is Ch
 
 L'indicateur de la barre des menus est non interactif. Pour modifier les réglages, rouvrez BatteryInside depuis Finder → Applications. Vous pouvez activer le lancement à l'ouverture de session, les alertes à 20 % et 10 %, quitter ou désinstaller l'app en toute sécurité.
 
+Le lancement à l'ouverture de session est silencieux : après un redémarrage ou une nouvelle connexion, seule la batterie apparaît dans la barre des menus et la fenêtre Réglages reste fermée. Rouvrez BatteryInside depuis Finder → Applications lorsque vous avez besoin des réglages.
+
 Pour ne conserver que BatteryInside dans la barre des menus :
 
 - macOS récent : Réglages Système → Barre des menus → Contrôles de la barre des menus → Batterie

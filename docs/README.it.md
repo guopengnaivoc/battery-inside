@@ -55,6 +55,8 @@ Lo stato di alimentazione viene determinato usando esclusivamente i valori macOS
 
 L'indicatore nella barra dei menu è di sola lettura e non reagisce ai clic. Per modificare le impostazioni, riapri BatteryInside da Finder → Applicazioni. Puoi attivare l'avvio al login, gli avvisi al 20% e al 10%, uscire o disinstallare l'app in sicurezza.
 
+L'avvio al login è silenzioso: dopo un riavvio o un nuovo accesso compare soltanto la batteria nella barra dei menu e la finestra Impostazioni resta chiusa. Riapri BatteryInside da Finder → Applicazioni quando desideri modificare le impostazioni.
+
 Per mantenere soltanto BatteryInside nella barra dei menu:
 
 - macOS recente: Impostazioni di Sistema → Barra dei menu → Controlli della barra dei menu → Batteria
