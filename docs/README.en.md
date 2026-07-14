@@ -16,6 +16,8 @@ Author: Guo Peng (郭鹏)
 2. Open the DMG and drag BatteryInside to Applications.
 3. Open BatteryInside from Finder → Applications. The indicator appears in the menu bar.
 
+> When upgrading, quit BatteryInside first, then drag the new copy to Applications and choose Replace. Version 2.8.4 uses a new icon resource name to bypass stale Launchpad icon caches seen on some Intel Macs. If Finder is rounded but Launchpad still briefly shows a square icon, restart the Mac once.
+
 ### If macOS blocks the first launch
 
 ![Open an unsigned app safely: do not move it to Trash, then use Open Anyway in Privacy & Security](images/open-anyway.svg)

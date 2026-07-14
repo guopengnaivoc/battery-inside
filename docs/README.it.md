@@ -16,6 +16,8 @@ Autore: Guo Peng (郭鹏)
 2. Apri il DMG e trascina BatteryInside in Applicazioni.
 3. Apri BatteryInside da Finder → Applicazioni. L'indicatore apparirà nella barra dei menu.
 
+> Durante l'aggiornamento, chiudi prima BatteryInside, trascina la nuova copia in Applicazioni e scegli Sostituisci. La versione 2.8.4 usa un nuovo nome per la risorsa dell'icona, così da evitare la vecchia cache di Launchpad presente su alcuni Mac Intel. Se in Finder l'icona è arrotondata ma in Launchpad appare ancora temporaneamente quadrata, riavvia il Mac una volta.
+
 ### Se macOS blocca il primo avvio
 
 ![Aprire in sicurezza un'app non firmata: non spostarla nel Cestino, quindi usare Apri comunque in Privacy e sicurezza](images/open-anyway.svg)

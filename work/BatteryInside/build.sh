@@ -21,7 +21,7 @@ mkdir -p "$OUT/AppIcon.iconset"
 "$OUT/IconMaker" "$OUT/AppIcon.iconset/icon_512x512@2x.png" 1024
 cp "$OUT/AppIcon.iconset/icon_512x512@2x.png" "$OUT/AppIcon-1024.png"
 clang -fobjc-arc "$ROOT/IcnsMaker.m" -o "$OUT/IcnsMaker" -framework Foundation
-"$OUT/IcnsMaker" "$OUT/AppIcon.iconset" "$APP/Contents/Resources/AppIcon.icns"
+"$OUT/IcnsMaker" "$OUT/AppIcon.iconset" "$APP/Contents/Resources/BatteryInsideRoundedIcon.icns"
 xcrun --sdk macosx clang -fobjc-arc -arch arm64 -arch x86_64 -mmacosx-version-min=13.0 \
   "$ROOT/BatteryInside.m" -o "$APP/Contents/MacOS/BatteryInside" \
   -framework AppKit -framework IOKit -framework ServiceManagement -framework UserNotifications
